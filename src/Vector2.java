@@ -14,6 +14,13 @@ public class Vector2 {
         this.y = y;
     }
 
+    public static Vector2 fromAngle(int angle, double length) {
+        return new Vector2(
+                Mathf.cos(angle) * length,
+                Mathf.cos(angle) * length
+            );
+    }
+
     public Vector2 add(Vector2 o) {
         return new Vector2(x + o.x, y + o.y);
     }
