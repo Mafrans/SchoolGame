@@ -37,4 +37,12 @@ public class Vector2 {
     public double dir() {
         return Mathf.atan(y / x);
     }
+
+    public double distance(Vector2 b) {
+        return Vector2.distance(this, b);
+    }
+
+    public static double distance(Vector2 a, Vector2 b) {
+        return Math.sqrt(Math.pow(b.x - a.x, 2) + Math.pow(b.y - a.y, 2));
+    }
 }
