@@ -1,3 +1,5 @@
+package me.mafrans.game;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -61,7 +63,7 @@ public class Game extends Canvas implements Runnable {
 
     private void draw() {
         for (int i = 0 ; i < pixels.length ; i++) {
-            pixels[i] = 0xFF000000;
+            pixels[i] = 0xFFFFFFFF;
         }
 
         for(GameObject object : gameObjects) {

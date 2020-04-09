@@ -1,3 +1,5 @@
+package me.mafrans.game;
+
 public class Collision {
     public Vector2 normal;
 

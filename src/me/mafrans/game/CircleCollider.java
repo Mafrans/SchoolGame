@@ -1,3 +1,5 @@
+package me.mafrans.game;
+
 public class CircleCollider implements Collider {
     public int radius = 0;
 

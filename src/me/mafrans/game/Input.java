@@ -1,3 +1,5 @@
+package me.mafrans.game;
+
 import java.util.ArrayList;
 import java.util.List;
 
