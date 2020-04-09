@@ -6,8 +6,8 @@ public class Vector2 {
     public static Vector2 up = new Vector2(0, 1);
     public static Vector2 down = new Vector2(0, -1);
 
-    private double x;
-    private double y;
+    public double x;
+    public double y;
 
     public Vector2(double x, double y) {
         this.x = x;
