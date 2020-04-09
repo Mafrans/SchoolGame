@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -30,7 +31,7 @@ public class Game extends Canvas implements Runnable {
     private int fps = 60;
     private int ups = 60;
 
-    private List<GameObject> gameObjects;
+    private List<GameObject> gameObjects = new ArrayList<>();
 
     public void instantiate(GameObject object) {
         gameObjects.add(object);
@@ -83,6 +84,8 @@ public class Game extends Canvas implements Runnable {
         for(GameObject object : gameObjects) {
             object.update();
         }
+
+        Input.update();
     }
 
     public synchronized void start() {
@@ -143,12 +146,12 @@ public class Game extends Canvas implements Runnable {
 
         @Override
         public void keyPressed(KeyEvent keyEvent) {
-
+            Input.setKey(keyEvent.getKeyCode(), true);
         }
 
         @Override
         public void keyReleased(KeyEvent keyEvent) {
-
+            Input.setKey(keyEvent.getKeyCode(), false);
         }
     }
 
