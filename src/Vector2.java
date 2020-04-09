@@ -34,6 +34,15 @@ public class Vector2 {
         return new Vector2(x * o.x, y * o.y);
     }
 
+    public double magnitude() {
+        return Math.abs(distance(Vector2.zero));
+    }
+
+    public Vector2 normalize() {
+        double magnitude = magnitude();
+        return new Vector2(x / magnitude, y / magnitude);
+    }
+
     public double dir() {
         return Mathf.atan(y / x);
     }
