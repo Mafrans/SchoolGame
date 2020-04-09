@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -14,7 +15,7 @@ import java.awt.image.DataBufferInt;
  *
  * @author Magnus Silverdal
  */
-public class Graphics extends Canvas implements Runnable {
+public class Game extends Canvas implements Runnable {
     private String title = "Graphics";
     private int width;
     private int height;
@@ -29,10 +30,13 @@ public class Graphics extends Canvas implements Runnable {
     private int fps = 60;
     private int ups = 60;
 
-    private Ball b;
-    private Paddle paddle;
+    private List<GameObject> gameObjects;
 
-    public Graphics(int w, int h, int scale) {
+    public void instantiate(GameObject object) {
+        gameObjects.add(object);
+    }
+
+    public Game(int w, int h, int scale) {
         this.width = w;
         this.height = h;
         this.scale = scale;
@@ -52,17 +56,16 @@ public class Graphics extends Canvas implements Runnable {
         this.addKeyListener(new MyKeyListener());
         this.addMouseListener(new MyMouseListener());
         this.requestFocus();
-
-        b = new Ball(200,100);
-        paddle = new Paddle(0,0,0xFFFF0000);
     }
 
     private void draw() {
         for (int i = 0 ; i < pixels.length ; i++) {
             pixels[i] = 0xFF000000;
         }
-        b.draw(pixels,width);
-        paddle.draw(pixels,width);
+
+        for(GameObject object : gameObjects) {
+            object.draw(pixels, width);
+        }
 
         BufferStrategy bs = getBufferStrategy();
         if (bs == null) {
@@ -77,18 +80,26 @@ public class Graphics extends Canvas implements Runnable {
     }
 
     private void update() {
-
-        b.update(paddle.getBoundingBox());
-        paddle.update();
+        for(GameObject object : gameObjects) {
+            object.update();
+        }
     }
 
     public synchronized void start() {
         running = true;
         thread = new Thread(this);
         thread.start();
+
+        for(GameObject object : gameObjects) {
+            object.start();
+        }
     }
 
     public synchronized void stop() {
+        for(GameObject object : gameObjects) {
+            object.destroy();
+        }
+
         running = false;
         try {
             thread.join();
@@ -132,12 +143,12 @@ public class Graphics extends Canvas implements Runnable {
 
         @Override
         public void keyPressed(KeyEvent keyEvent) {
-            paddle.keyPressed(keyEvent);
+
         }
 
         @Override
         public void keyReleased(KeyEvent keyEvent) {
-            paddle.keyReleased(keyEvent);
+
         }
     }
 
