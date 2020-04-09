@@ -12,9 +12,4 @@ public class CircleCollider implements Collider {
             return new Collision(b.subtract(a).normalize());
         }
     }
-
-    @Override
-    public Collision withBox(Vector2 a, Vector2 b, BoxCollider c) {
-        return null;
-    }
 }
