@@ -15,7 +15,7 @@ public class Input {
             }
         }
         else {
-            keys.remove(key);
+            keys.remove((Object)key);
         }
     }
 

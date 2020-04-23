@@ -2,6 +2,7 @@ package me.mafrans.game;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.Raster;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.KeyEvent;
@@ -62,19 +63,22 @@ public class Game extends Canvas implements Runnable {
     }
 
     private void draw() {
+        BufferStrategy bs = getBufferStrategy();
+        if (bs == null) {
+            createBufferStrategy(3);
+            return;
+        }
+
+
         for (int i = 0 ; i < pixels.length ; i++) {
-            pixels[i] = 0xFFFFFFFF;
+            pixels[i] = 0x00000000;
         }
 
         for(GameObject object : gameObjects) {
             object.draw(pixels, width);
         }
 
-        BufferStrategy bs = getBufferStrategy();
-        if (bs == null) {
-            createBufferStrategy(3);
-            return;
-        }
+        image.setRGB(0, 0, width, height, pixels, 0, 0);
 
         java.awt.Graphics g = bs.getDrawGraphics();
         g.drawImage(image, 0, 0, getWidth(), getHeight(), null);

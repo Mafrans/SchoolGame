@@ -1,5 +1,7 @@
 package me.mafrans.game;
 
+import java.util.Arrays;
+
 public abstract class GameObject {
     public Sprite sprite;
     public Transform transform = new Transform();
