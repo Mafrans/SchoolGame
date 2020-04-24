@@ -44,7 +44,7 @@ public class Game extends Canvas implements Runnable {
         this.width = w;
         this.height = h;
         this.scale = scale;
-        image = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+        image = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
 
         pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
         Dimension size = new Dimension(scale*width, scale*height);
@@ -69,16 +69,13 @@ public class Game extends Canvas implements Runnable {
             return;
         }
 
-
         for (int i = 0 ; i < pixels.length ; i++) {
-            pixels[i] = 0x00000000;
+            pixels[i] = 0xFFFFFF;
         }
 
         for(GameObject object : gameObjects) {
             object.draw(pixels, width);
         }
-
-        image.setRGB(0, 0, width, height, pixels, 0, 0);
 
         java.awt.Graphics g = bs.getDrawGraphics();
         g.drawImage(image, 0, 0, getWidth(), getHeight(), null);

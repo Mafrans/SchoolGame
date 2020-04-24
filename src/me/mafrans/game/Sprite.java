@@ -22,7 +22,7 @@ public class Sprite {
         this.height = h;
         pixels = new int[w*h];
         for (int i = 0 ; i < pixels.length ; i++) {
-            pixels[i] = 0xFFFFFF;
+            pixels[i] = 0xFF0000;
         }
     }
 
