@@ -1,5 +1,7 @@
 package me.mafrans.game;
 
+import java.awt.*;
+
 public class Vector2 {
     public static Vector2 zero = new Vector2(0, 0);
     public static Vector2 one = new Vector2(1, 1);
@@ -14,6 +16,11 @@ public class Vector2 {
     public Vector2(double x, double y) {
         this.x = x;
         this.y = y;
+    }
+
+    public Vector2(Point point) {
+        this.x = point.x;
+        this.y = point.y;
     }
 
     public static Vector2 fromAngle(int angle, double length) {
