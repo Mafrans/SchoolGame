@@ -68,7 +68,9 @@ public class Sprite {
 
     public void setColor(int color) {
         for (int i = 0 ; i < pixels.length ; i++) {
-            pixels[i] = color;
+            if(pixels[i] != Sprite.TRANSPARENT) {
+                pixels[i] = color;
+            }
         }
     }
 }

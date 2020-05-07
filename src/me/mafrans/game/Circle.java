@@ -6,7 +6,7 @@ public class Circle extends Sprite {
 
         for (int x = 0; x < r*2; x++) {
             for(int y = 0; y < r*2; y++) {
-                pixels[y * r * 2 + x] = 0xFFFFFF;
+                pixels[y * r * 2 + x] = Sprite.TRANSPARENT;
                 if(new Vector2(r, r).distance(new Vector2(x, y)) < r) {
                     pixels[y * r * 2 + x] = 0xFF0000;
                 }
