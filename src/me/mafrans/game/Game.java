@@ -22,9 +22,9 @@ public class Game extends Canvas implements Runnable {
     private int height;
 
     private JFrame frame;
+    private int scale;
     private BufferedImage image;
     private int[] pixels;
-    private int scale;
 
     private Thread thread;
     private boolean running = false;
@@ -188,7 +188,7 @@ public class Game extends Canvas implements Runnable {
 
         @Override
         public void mouseMoved(MouseEvent mouseEvent) {
-            Input.mousePosition = new Vector2(mouseEvent.getPoint()).dot(0.5).round();
+            Input.mousePosition = new Vector2(mouseEvent.getPoint()).dot(1d/scale).round();
         }
     }
 }
