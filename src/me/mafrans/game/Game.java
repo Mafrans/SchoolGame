@@ -2,13 +2,10 @@ package me.mafrans.game;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 import java.awt.image.Raster;
 import java.util.ArrayList;
 import java.util.List;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
@@ -59,6 +56,7 @@ public class Game extends Canvas implements Runnable {
 
         this.addKeyListener(new MyKeyListener());
         this.addMouseListener(new MyMouseListener());
+        this.addMouseMotionListener(new MyMouseMotionListener());
         this.requestFocus();
     }
 
@@ -84,15 +82,19 @@ public class Game extends Canvas implements Runnable {
     }
 
     private void update() {
+        /*
         Input.mousePosition = new Vector2(
-                MouseInfo.getPointerInfo().getLocation().x,
-                MouseInfo.getPointerInfo().getLocation().y
-            ).subtract(
-                new Vector2(
-                    frame.getLocationOnScreen().x,
-                    frame.getLocationOnScreen().y
-                )
-            );
+            MouseInfo.getPointerInfo().getLocation().x,
+            MouseInfo.getPointerInfo().getLocation().y
+        ).subtract(
+            new Vector2(
+                frame.getLocationOnScreen().x,
+                frame.getLocationOnScreen().y
+            )
+        ).subtract(
+            Vector2.zero
+        ).dot(0.5d);
+        */
 
         for (GameObject object : gameObjects) {
             object.update();
@@ -188,6 +190,18 @@ public class Game extends Canvas implements Runnable {
 
         @Override
         public void mouseExited(MouseEvent mouseEvent) {
+        }
+    }
+
+    private class MyMouseMotionListener implements MouseMotionListener {
+        @Override
+        public void mouseDragged(MouseEvent mouseEvent) {
+
+        }
+
+        @Override
+        public void mouseMoved(MouseEvent mouseEvent) {
+            Input.mousePosition = new Vector2(mouseEvent.getPoint()).dot(0.5).round();
         }
     }
 }
