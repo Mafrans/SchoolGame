@@ -2,7 +2,7 @@ package me.mafrans.game;
 
 public class CircleCollider implements Collider {
     public int radius = 0;
-    public Vector2 offset = Vector2.one.dot(radius);
+    public Vector2 offset = Vector2.one.dot(-radius);
 
     @Override
     public Collision withCircle(Vector2 a, Vector2 b, CircleCollider c) {
