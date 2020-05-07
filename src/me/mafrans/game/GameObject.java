@@ -17,7 +17,10 @@ public abstract class GameObject {
             for (int j = 0; j < sprite.getWidth(); j++) {
                 int index = (int)((transform.position.y+i)*screenWidth + transform.position.x+j);
                 if(index >= 0 && index < screen.length) {
-                    screen[index] = sprite.getPixels()[i*sprite.getWidth() + j];
+                    int color = sprite.getPixels()[i*sprite.getWidth() + j];
+                    if(color != Sprite.TRANSPARENT) {
+                        screen[index] = color;
+                    }
                 }
             }
         }
