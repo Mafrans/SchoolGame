@@ -183,7 +183,7 @@ public class Game extends Canvas implements Runnable {
     private class MyMouseMotionListener implements MouseMotionListener {
         @Override
         public void mouseDragged(MouseEvent mouseEvent) {
-
+            Input.mousePosition = new Vector2(mouseEvent.getPoint()).dot(1d/scale).round();
         }
 
         @Override
