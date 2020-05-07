@@ -82,19 +82,6 @@ public class Game extends Canvas implements Runnable {
     }
 
     private void update() {
-        /*
-        Input.mousePosition = new Vector2(
-            MouseInfo.getPointerInfo().getLocation().x,
-            MouseInfo.getPointerInfo().getLocation().y
-        ).subtract(
-            new Vector2(
-                frame.getLocationOnScreen().x,
-                frame.getLocationOnScreen().y
-            )
-        ).subtract(
-            Vector2.zero
-        ).dot(0.5d);
-        */
 
         for (GameObject object : gameObjects) {
             object.update();
