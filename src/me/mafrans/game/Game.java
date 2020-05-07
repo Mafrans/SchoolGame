@@ -72,7 +72,7 @@ public class Game extends Canvas implements Runnable {
         }
 
         for (GameObject object : gameObjects) {
-            object.draw(pixels, width);
+            object.draw(pixels, width, height);
         }
 
         java.awt.Graphics g = bs.getDrawGraphics();
