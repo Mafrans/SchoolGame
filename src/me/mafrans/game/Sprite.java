@@ -1,6 +1,7 @@
 package me.mafrans.game;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.io.File;
@@ -13,9 +14,11 @@ import java.io.IOException;
  * @author Magnus Silverdal
  */
 public class Sprite {
+    public static int TRANSPARENT = 0x00FF00;
+
     private int width;
     private int height;
-    private int[] pixels;
+    public int[] pixels;
 
     public Sprite(int w, int h) {
         this.width = w;
