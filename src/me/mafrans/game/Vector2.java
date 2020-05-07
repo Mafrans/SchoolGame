@@ -63,11 +63,23 @@ public class Vector2 {
         return Mathf.atan(y / x);
     }
 
+    public Vector2 round() {
+        return new Vector2(Math.round(this.x), Math.round(this.y));
+    }
+
     public double distance(Vector2 b) {
         return Vector2.distance(this, b);
     }
 
     public static double distance(Vector2 a, Vector2 b) {
         return Math.sqrt(Math.pow(b.x - a.x, 2) + Math.pow(b.y - a.y, 2));
+    }
+
+    @Override
+    public String toString() {
+        return "Vector2{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
     }
 }
