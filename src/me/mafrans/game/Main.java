@@ -1,5 +1,6 @@
 package me.mafrans.game;
 
+import me.mafrans.game.gameobjects.Cursor;
 import me.mafrans.game.gameobjects.TestObject;
 
 /**
@@ -13,6 +14,7 @@ public class Main {
         Game game = new Game(400,300,2);
 
         game.instantiate(new TestObject());
+        game.instantiate(new Cursor());
         game.start();
     }
 }

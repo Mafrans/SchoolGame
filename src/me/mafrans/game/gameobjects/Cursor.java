@@ -17,5 +17,6 @@ public class Cursor extends GameObject {
 
     @Override
     public void update() {
+        transform.position = Input.mousePosition;
     }
 }
