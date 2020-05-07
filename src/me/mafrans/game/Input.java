@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Input {
+    public static Vector2 mousePosition;
+
     private static List<Integer> keys = new ArrayList<>();
     private static List<Integer> lastKeys = new ArrayList<>();
     private static List<Integer> pressedKeys = new ArrayList<>();

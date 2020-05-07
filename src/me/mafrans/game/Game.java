@@ -47,7 +47,7 @@ public class Game extends Canvas implements Runnable {
         image = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
 
         pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
-        Dimension size = new Dimension(scale*width, scale*height);
+        Dimension size = new Dimension(scale * width, scale * height);
         setPreferredSize(size);
         frame = new JFrame();
         frame.setTitle(title);
@@ -69,11 +69,11 @@ public class Game extends Canvas implements Runnable {
             return;
         }
 
-        for (int i = 0 ; i < pixels.length ; i++) {
+        for (int i = 0; i < pixels.length; i++) {
             pixels[i] = 0xFFFFFF;
         }
 
-        for(GameObject object : gameObjects) {
+        for (GameObject object : gameObjects) {
             object.draw(pixels, width);
         }
 
@@ -84,7 +84,17 @@ public class Game extends Canvas implements Runnable {
     }
 
     private void update() {
-        for(GameObject object : gameObjects) {
+        Input.mousePosition = new Vector2(
+                MouseInfo.getPointerInfo().getLocation().x,
+                MouseInfo.getPointerInfo().getLocation().y
+            ).subtract(
+                new Vector2(
+                    frame.getLocationOnScreen().x,
+                    frame.getLocationOnScreen().y
+                )
+            );
+
+        for (GameObject object : gameObjects) {
             object.update();
         }
 
@@ -96,13 +106,13 @@ public class Game extends Canvas implements Runnable {
         thread = new Thread(this);
         thread.start();
 
-        for(GameObject object : gameObjects) {
+        for (GameObject object : gameObjects) {
             object.start();
         }
     }
 
     public synchronized void stop() {
-        for(GameObject object : gameObjects) {
+        for (GameObject object : gameObjects) {
             object.destroy();
         }
 
