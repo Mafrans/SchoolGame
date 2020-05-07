@@ -127,14 +127,14 @@ public class Game extends Canvas implements Runnable {
             deltaUpdate += (now - lastTime) / stateUpdateinteval;
             lastTime = now;
 
-            while (deltaUpdate >= 1) {
-                update();
-                deltaUpdate--;
-            }
-
             while (deltaFrame >= 1) {
                 draw();
                 deltaFrame--;
+            }
+
+            while (deltaUpdate >= 1) {
+                update();
+                deltaUpdate--;
             }
         }
         stop();
