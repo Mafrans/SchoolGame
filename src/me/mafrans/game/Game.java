@@ -92,12 +92,13 @@ public class Game extends Canvas implements Runnable {
 
     public synchronized void start() {
         running = true;
-        thread = new Thread(this);
-        thread.start();
 
         for (GameObject object : gameObjects) {
             object.start();
         }
+
+        thread = new Thread(this);
+        thread.start();
     }
 
     public synchronized void stop() {
