@@ -9,13 +9,13 @@ public class Cursor extends GameObject {
     public void start() {
         transform.position = Vector2.zero;
         sprite = new Circle(16);
-        //sprite.setColor(0x777777);
+        sprite.setColor(0x777777);
     }
 
     @Override
     public void update() {
         if(Input.mousePosition != null) {
-            transform.position = Input.mousePosition;
+            transform.position = Input.mousePosition.subtract(new Vector2(sprite.getWidth()/2, sprite.getHeight()/2).round());
         }
     }
 }
