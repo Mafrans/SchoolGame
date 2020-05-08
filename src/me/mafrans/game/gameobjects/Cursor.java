@@ -9,6 +9,7 @@ public class Cursor extends GameObject {
     public void start() {
         transform.position = Vector2.zero;
         sprite = new Circle(16);
+        colliders = new Collider[] { new RectCollider(new Vector2(32, 32)) };
         sprite.setColor(0x777777);
     }
 

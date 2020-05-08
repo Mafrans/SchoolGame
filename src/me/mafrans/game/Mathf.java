@@ -51,6 +51,15 @@ public class Mathf {
         return deg;
     }
 
+    public static int sign(double val) {
+        if(val > 0)
+            return 1;
+        else if(val < 0)
+            return -1;
+        else
+            return 0;
+    }
+
     public static double atan(double val) {
         double deg = 0;
         double closest = 9999;

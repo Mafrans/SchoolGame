@@ -1,5 +1,6 @@
 package me.mafrans.game;
 
+import me.mafrans.game.gameobjects.CollisionRect;
 import me.mafrans.game.gameobjects.Cursor;
 import me.mafrans.game.gameobjects.TestObject;
 
@@ -15,6 +16,7 @@ public class Main {
 
         game.instantiate(new TestObject());
         game.instantiate(new Cursor());
+        game.instantiate(new CollisionRect());
         game.start();
     }
 }

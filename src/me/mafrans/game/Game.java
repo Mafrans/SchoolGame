@@ -83,6 +83,50 @@ public class Game extends Canvas implements Runnable {
 
     private void update() {
 
+        for (GameObject o1 : gameObjects) {
+            for(Collider c1 : o1.colliders) {
+                for (GameObject o2 : gameObjects) {
+                    for(Collider c2 : o1.colliders) {
+                        if(o1 != o2) {
+                            Collision collision1 = null;
+                            Collision collision2 = null;
+                            if(c2 instanceof CircleCollider) {
+                                collision1 = c1.withCircle(o1.transform.position, o2.transform.position, (CircleCollider) c2);
+                            }
+
+                            if(c2 instanceof RectCollider) {
+                                collision1 = c1.withRect(o1.transform.position, o2.transform.position, (RectCollider) c2);
+                            }
+
+                            if(c1 instanceof CircleCollider) {
+                                collision2 = c2.withCircle(o2.transform.position, o1.transform.position, (CircleCollider) c1);
+                            }
+
+                            if(c1 instanceof RectCollider) {
+                                collision2 = c2.withRect(o2.transform.position, o1.transform.position, (RectCollider) c1);
+                            }
+
+                            if(collision1 != null) {
+                                collision1.collider = c2;
+                                o1._collide(collision1);
+                            }
+                            else {
+                                o1._uncollide(new Collision(c2));
+                            }
+
+                            if(collision2 != null) {
+                                collision2.collider = c1;
+                                o2._collide(collision2);
+                            }
+                            else {
+                                o2._uncollide(new Collision(c1));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         for (GameObject object : gameObjects) {
             object.update();
         }

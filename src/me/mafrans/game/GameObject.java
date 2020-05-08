@@ -1,14 +1,21 @@
 package me.mafrans.game;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
 
 public abstract class GameObject {
     public Sprite sprite;
     public Transform transform = new Transform();
+    public Collider[] colliders = new Collider[0];
+    public HashSet<Collider> _collidingWith = new HashSet<>();
     public void update() {}
     public void start() {}
     public void destroy() {}
-    public void collision(Collision c) {}
+    public void collisionEnter(Collision c) {}
+    public void collisionExit(Collision c) {}
+    public void collisionStay(Collision c) {}
 
     public void draw(int[] screen, int screenWidth, int screenHeight) {
         if(sprite == null) return;
@@ -29,6 +36,20 @@ public abstract class GameObject {
                     }
                 }
             }
+        }
+    }
+
+    public void _collide(Collision collision) {
+        if(!_collidingWith.contains(collision.collider)) {
+            collisionEnter(collision);
+            _collidingWith.add(collision.collider);
+        }
+    }
+
+    public void _uncollide(Collision collision) {
+        if(_collidingWith.contains(collision.collider)) {
+            collisionExit(collision);
+            _collidingWith.remove(collision.collider);
         }
     }
 }
