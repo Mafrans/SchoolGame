@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public abstract class GameObject {
+    public Game game;
     public Sprite sprite;
     public Transform transform = new Transform();
     public Collider[] colliders = new Collider[0];

@@ -1,8 +1,6 @@
 package me.mafrans.game;
 
-import me.mafrans.game.gameobjects.CollisionRect;
-import me.mafrans.game.gameobjects.Cursor;
-import me.mafrans.game.gameobjects.TestObject;
+import me.mafrans.game.gameobjects.*;
 
 /**
  * This is a class

@@ -15,7 +15,7 @@ public class CircleCollider implements Collider {
 
     @Override
     public Collision withCircle(Vector2 a, Vector2 b, CircleCollider c) {
-        double distance = Vector2.distance(a.add(offset), b.add(c.offset));
+        double distance = Vector2.distance(a.add(offset).add(new Vector2(this.radius, this.radius)), b.add(c.offset).add(new Vector2(this.radius, this.radius)));
 
         if(distance > radius + c.radius) {
             return null;
