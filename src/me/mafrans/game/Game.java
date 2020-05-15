@@ -160,6 +160,14 @@ public class Game extends Canvas implements Runnable {
         }
     }
 
+    public int getScaledWidth() {
+        return width / scale;
+    }
+
+    public int getScaledHeight() {
+        return height / scale;
+    }
+
     @Override
     public void run() {
         double frameUpdateinteval = 1000000000.0 / fps;

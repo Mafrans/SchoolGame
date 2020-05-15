@@ -12,9 +12,7 @@ public class Main {
     public static void main(String[] args) {
         Game game = new Game(400,300,2);
 
-        game.instantiate(new TestObject());
-        game.instantiate(new Cursor());
-        game.instantiate(new CollisionRect());
+        game.instantiate(new Paddle());
         game.start();
     }
 }
