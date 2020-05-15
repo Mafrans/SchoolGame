@@ -41,8 +41,6 @@ public abstract class GameObject {
     }
 
     public void _collide(Collision collision) {
-        collision.gameObject = this;
-
         if(!_collidingWith.contains(collision.collider)) {
             collisionEnter(collision);
             _collidingWith.add(collision.collider);
@@ -50,8 +48,6 @@ public abstract class GameObject {
     }
 
     public void _uncollide(Collision collision) {
-        collision.gameObject = this;
-
         if(_collidingWith.contains(collision.collider)) {
             collisionExit(collision);
             _collidingWith.remove(collision.collider);

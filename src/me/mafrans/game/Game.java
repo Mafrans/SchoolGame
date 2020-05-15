@@ -112,6 +112,7 @@ public class Game extends Canvas implements Runnable {
 
                             if (collision1 != null) {
                                 collision1.collider = c2;
+                                collision2.gameObject = o2;
                                 o1._collide(collision1);
                             } else {
                                 o1._uncollide(new Collision(c2));
@@ -119,6 +120,7 @@ public class Game extends Canvas implements Runnable {
 
                             if (collision2 != null) {
                                 collision2.collider = c1;
+                                collision2.gameObject = o1;
                                 o2._collide(collision2);
                             } else {
                                 o2._uncollide(new Collision(c1));

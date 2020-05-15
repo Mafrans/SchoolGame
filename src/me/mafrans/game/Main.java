@@ -13,6 +13,7 @@ public class Main {
         Game game = new Game(400,300,2);
 
         game.instantiate(new Paddle());
+        game.instantiate(new Ball());
         game.start();
     }
 }
