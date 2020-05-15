@@ -219,11 +219,12 @@ public class Game extends Canvas implements Runnable {
 
         @Override
         public void mousePressed(MouseEvent mouseEvent) {
+            Input.setMouseKey(mouseEvent.getButton(), true);
         }
 
         @Override
         public void mouseReleased(MouseEvent mouseEvent) {
-
+            Input.setMouseKey(mouseEvent.getButton(), false);
         }
 
         @Override

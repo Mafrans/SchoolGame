@@ -3,6 +3,7 @@ package me.mafrans.game;
 public class Collision {
     public Vector2 normal;
     public Collider collider;
+    public GameObject gameObject;
 
     public Collision(Vector2 normal) {
         this.normal = normal;
